@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: mursudemo-eksctl
+  region: eu-north-1
+  version: "1.19"
+
+availabilityZones: ["eu-north-1a", "eu-north-1b", "eu-north-1c"]
+
+managedNodeGroups:
+- name: nodegroup
+  desiredCapacity: 3
+  instanceType: t3.small
+  ssh:
+    enableSsm: true
+
+# To enable all of the control plane logs, uncomment below:
+# cloudWatch:
+#  clusterLogging:
+#    enableTypes: ["*"]
+
+#secretsEncryption:
+#  keyARN: ${MASTER_ARN}
